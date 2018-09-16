@@ -38,7 +38,7 @@
 
 * Para funcionar:
 
-	* certifique-se de esteja Debug x86
+	* certifique-se de que esteja em Debug x86
 
 ## Funcionando1Musica: exemplo de OpenAL na libUnicornio
 
