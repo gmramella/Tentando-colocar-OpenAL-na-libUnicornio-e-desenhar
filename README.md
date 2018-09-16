@@ -38,7 +38,7 @@
 
 * Para funcionar:
 
-	** certifique-se de esteja Debug x86
+	* certifique-se de esteja Debug x86
 
 ## Funcionando1Musica: exemplo de OpenAL na libUnicornio
 
@@ -48,20 +48,20 @@
 
 * Para funcionar:
 
-	** compilar para criar uma pasta bin e colar arquivos da pasta bin de algum projeto da libUnicornio nesta pasta criada
+	* compilar para criar uma pasta bin e colar arquivos da pasta bin de algum projeto da libUnicornio nesta pasta criada
 	
-	** adicionar OpenAL32.dll nesta pasta
+	* adicionar OpenAL32.dll nesta pasta
 	
-	** trocar .. por . na linha 17 do main.cpp
+	* trocar .. por . na linha 17 do main.cpp
 
 ## Gravity: tentativa de mostrar na libUnicornio a onda sonora da música que estiver tocando
 
 * Para funcionar:
 
-	** compilar para criar uma pasta bin e colar arquivos da pasta bin de algum projeto da libUnicornio nesta pasta criada
+	* compilar para criar uma pasta bin e colar arquivos da pasta bin de algum projeto da libUnicornio nesta pasta criada
 	
-	** adicionar OpenAL32.dll nesta pasta
+	* adicionar OpenAL32.dll nesta pasta
 	
-	** trocar ./Musics por ./bin/Musics nas linhas 17-21 do main.cpp
+	* trocar ./Musics por ./bin/Musics nas linhas 17-21 do main.cpp
 	
-	** trocar ./Files por ./bin/Files nas linhas 89 e 106 do AudioManager.h
+	* trocar ./Files por ./bin/Files nas linhas 89 e 106 do AudioManager.h
