@@ -1,0 +1,14 @@
+ChunkID: RIFF
+ChunkSize: 46123356
+Format: WAVE
+Subchunk1ID: fmt 
+Subchunk1Size: 16
+AudioFormat: 1
+NumChannels: 2
+SampleRate: 44100
+ByteRate: 176400
+BlockAlign: 4
+BitsPerSample: 16
+Subchunk2ID: data
+Subchunk2Size: 46123312
+NumSamples: 11530828
