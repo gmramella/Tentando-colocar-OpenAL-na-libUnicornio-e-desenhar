@@ -62,6 +62,8 @@
 	
 	* adicionar OpenAL32.dll nesta pasta (disponibilizei junto aos projetos)
 	
+	* criar pastas Musics (onde vão as músicas usadas) e Files dentro da pasta bin
+	
 	* trocar ./Musics por ./bin/Musics nas linhas 17-21 do main.cpp
 	
 	* trocar ./Files por ./bin/Files nas linhas 89 e 106 do AudioManager.h
