@@ -50,7 +50,7 @@
 
 	* compilar para criar uma pasta bin e colar arquivos da pasta bin de algum projeto da libUnicornio nesta pasta criada
 	
-	* adicionar OpenAL32.dll nesta pasta
+	* adicionar OpenAL32.dll nesta pasta (disponibilizei junto aos projetos)
 	
 	* trocar .. por . na linha 17 do main.cpp
 
@@ -60,7 +60,7 @@
 
 	* compilar para criar uma pasta bin e colar arquivos da pasta bin de algum projeto da libUnicornio nesta pasta criada
 	
-	* adicionar OpenAL32.dll nesta pasta
+	* adicionar OpenAL32.dll nesta pasta (disponibilizei junto aos projetos)
 	
 	* trocar ./Musics por ./bin/Musics nas linhas 17-21 do main.cpp
 	
