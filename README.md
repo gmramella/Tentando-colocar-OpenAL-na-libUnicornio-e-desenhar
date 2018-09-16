@@ -1,6 +1,6 @@
 # Tentando colocar OpenAL na libUnicornio e desenhar
 
-## HelloOpenAL: exemplo de OpenAL no Visual Studio
+## Como criar um projeto com OpenAL
 
 * Instalar cmake usando .msi
 
@@ -34,10 +34,34 @@
 
 	* Linker > Input > Additional Dependencies: ../lib/OpenAL32.lib;%(AdditionalDependencies)
 
+## HelloOpenAL: exemplo de OpenAL no Visual Studio
+
+* Para funcionar:
+
+	** certifique-se de esteja Debug x86
+
 ## Funcionando1Musica: exemplo de OpenAL na libUnicornio
 
 * É apenas um grande copia e cola do HelloOpenAL na libUnicornio, com a diferença que não adianta ter printf porque não tem console
 
 * Precisa fazer funcionar com garantia 2+ músicas se quiser tocar 2+ sons simultaneamente
 
+* Para funcionar:
+
+	** compilar para criar uma pasta bin e colar arquivos da pasta bin de algum projeto da libUnicornio nesta pasta criada
+	
+	** adicionar OpenAL32.dll nesta pasta
+	
+	** trocar .. por . na linha 17 do main.cpp
+
 ## Gravity: tentativa de mostrar na libUnicornio a onda sonora da música que estiver tocando
+
+* Para funcionar:
+
+	** compilar para criar uma pasta bin e colar arquivos da pasta bin de algum projeto da libUnicornio nesta pasta criada
+	
+	** adicionar OpenAL32.dll nesta pasta
+	
+	** trocar ./Musics por ./bin/Musics nas linhas 17-21 do main.cpp
+	
+	** trocar ./Files por ./bin/Files nas linhas 89 e 106 do AudioManager.h
