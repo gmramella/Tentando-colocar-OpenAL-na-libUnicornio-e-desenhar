@@ -136,47 +136,28 @@ Wav* AudioManager::loadWAV(const char* title)
 	return new Wav(_strdup(ChunkID), ChunkSize, _strdup(Format), _strdup(Subchunk1ID), Subchunk1Size, AudioFormat, NumChannels, SampleRate, ByteRate, BlockAlign, BitsPerSample, _strdup(Subchunk2ID), Subchunk2Size, NumSamples, charData);
 }
 
-void AudioManager::playWav(const char* title, sample* samples, unsigned int& numSamples)
+void AudioManager::open()
 {
-	Wav* wav = loadWAV(title);
+	device = alcOpenDevice(NULL);
+	if (device == NULL)
+	{
+		std::cout << "Cannot open sound card" << std::endl;
+		return;
+	}
+	context = alcCreateContext(device, NULL);
+	if (context == NULL)
+	{
+		std::cout << "Cannot open context" << std::endl;
+		return;
+	}
+	alcMakeContextCurrent(context);
+	checkError(error);
+}
+
+void AudioManager::play(Wav* wav)
+{
 	if (wav != NULL)
 	{
-		//wav->printHeader();
-		//wav->printCharData();
-		//wav->printIntData();
-		//wav->writeToFiles(title);
-
-		if (samples != NULL)
-		{
-			numSamples = NULL;
-			delete[] samples;
-			samples = NULL;
-		}
-		samples = new sample[wav->NumSamples];
-		memcpy(samples, wav->IntData, wav->NumSamples * sizeof(sample));
-
-		ALCenum error;
-		ALCdevice* device = NULL;
-		ALCcontext* context = NULL;
-		unsigned int bufferid, format;
-		unsigned int sourceid;
-		ALint source_state;
-
-		device = alcOpenDevice(NULL);
-		if (device == NULL)
-		{
-			std::cout << "Cannot open sound card" << std::endl;
-			return;
-		}
-		context = alcCreateContext(device, NULL);
-		if (context == NULL)
-		{
-			std::cout << "Cannot open context" << std::endl;
-			return;
-		}
-		alcMakeContextCurrent(context);
-		checkError(error);
-
 		alGenBuffers(1, &bufferid);
 		checkError(error);
 		format = ((wav->NumChannels + wav->BitsPerSample) == 9) * AL_FORMAT_MONO8 + ((wav->NumChannels + wav->BitsPerSample) == 10) * AL_FORMAT_STEREO8 + ((wav->NumChannels + wav->BitsPerSample) == 17) * AL_FORMAT_MONO16 + ((wav->NumChannels + wav->BitsPerSample) == 18) * AL_FORMAT_STEREO16;
@@ -195,21 +176,34 @@ void AudioManager::playWav(const char* title, sample* samples, unsigned int& num
 			alGetSourcei(sourceid, AL_SOURCE_STATE, &source_state);
 			checkError(error);
 		}
-
-		alDeleteSources(1, &sourceid);
-		alDeleteBuffers(1, &bufferid);
-		alcDestroyContext(context);
-		alcCloseDevice(device);
-
-		wav->Clear();
-		wav = NULL;
-		delete[] wav;
-		error = NULL;
-		device = NULL;
-		context = NULL;
-		bufferid = NULL;
-		format = NULL;
-		sourceid = NULL;
-		source_state = NULL;
 	}
+}
+
+void AudioManager::replay()
+{
+	alSourcePlay(sourceid);
+	checkError(error);
+
+	alGetSourcei(sourceid, AL_SOURCE_STATE, &source_state);
+	checkError(error);
+	while (source_state == AL_PLAYING) {
+		alGetSourcei(sourceid, AL_SOURCE_STATE, &source_state);
+		checkError(error);
+	}
+}
+
+void AudioManager::close()
+{
+	alDeleteSources(1, &sourceid);
+	alDeleteBuffers(1, &bufferid);
+	alcDestroyContext(context);
+	alcCloseDevice(device);
+
+	error = NULL;
+	device = NULL;
+	context = NULL;
+	bufferid = NULL;
+	format = NULL;
+	sourceid = NULL;
+	source_state = NULL;
 }
