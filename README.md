@@ -60,10 +60,10 @@
 
 	* compilar para criar uma pasta bin e colar arquivos da pasta bin de algum projeto da libUnicornio nesta pasta criada
 	
-	* adicionar OpenAL32.dll nesta pasta (disponibilizei junto aos projetos)
+	* adicionar OpenAL32.dll, libfftw3-3.dll e arial.ttf nesta pasta (disponibilizei junto aos projetos)
 	
 	* criar pastas Musics (onde vão as músicas usadas) e Files dentro da pasta bin
 	
-	* trocar ./Musics por ./bin/Musics nas linhas 17-21 do main.cpp
+	* trocar ./Musics por ./bin/Musics nas linhas 50-63 do main.cpp
 	
-	* trocar ./Files por ./bin/Files nas linhas 89 e 106 do AudioManager.h
+	* trocar ./Files por ./bin/Files nas linhas 96, 113, 122, 141 e 150 do AudioManager.h e 62 do Utils.cpp
